@@ -1,0 +1,40 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+{% load custom_tags %}
+{% block title %}
+
+{% endblock title %}
+
+{% block content %}
+   <h1>Детализация  № {{Post.pk}} </h1>
+   <hr>
+   {% if Post %}
+       <table style="border:1px dashed">
+           <tr>
+               <td style="border:1px dashed">Заголовок</td>
+               <td style="border:1px dashed">Дата публикации</td>
+               <td style="border:1px dashed">Текст(полный)</td>
+
+           </tr>
+
+
+           <br>
+
+
+           <tr>
+
+
+
+               <td style="border:1px dashed">{{ Post.post_title|censor }}</td>
+               <td style="border:1px dashed">{{ Post.date_and_time_created|date:'M d Y' }}</td>
+               <td style="border:1px dashed">{{ Post.post_content|censor}}</td>
+
+
+           </tr>
+
+
+       </table>
+   {% else %}
+       <h2>Новостей нет!</h2>
+   {% endif %}
+{% endblock content %}
